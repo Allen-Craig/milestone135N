@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AddressBook {
-
+	//test
 	private String name;
 	private Scanner sc = new Scanner(System.in);
 	private List<BaseContact> contacts = new ArrayList<>();

@@ -1,7 +1,8 @@
 package milestone135;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Photo {
+public class Photo implements Serializable{
 
 	private int photoID;
 	private String fileName;

@@ -1,6 +1,8 @@
 package milestone135;
 
-public class Location {
+import java.io.Serializable;
+
+public class Location implements Serializable{
 
 	private int locationID;
 	private String streetName;

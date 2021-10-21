@@ -1,8 +1,9 @@
 package milestone135;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class BaseContact {
+public class BaseContact implements Serializable{
 
 	private ArrayList<Photo> listOfPhotos = new ArrayList<>();
 	private String contactID;

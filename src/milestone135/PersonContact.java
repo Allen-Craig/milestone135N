@@ -1,8 +1,9 @@
 package milestone135;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PersonContact extends BaseContact {
+public class PersonContact extends BaseContact implements Serializable{
 
 	private String birthDate;
 	private String description;

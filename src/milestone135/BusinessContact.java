@@ -1,8 +1,9 @@
 package milestone135;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class BusinessContact extends BaseContact {
+public class BusinessContact extends BaseContact implements Serializable{
 
 	private String businessHours;
 	private String websiteURL;

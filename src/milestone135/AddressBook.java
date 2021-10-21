@@ -1,11 +1,12 @@
 package milestone135;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class AddressBook {
-	//test
+	// test
 	private String name;
 	private Scanner sc = new Scanner(System.in);
 	private List<BaseContact> contacts = new ArrayList<>();
@@ -22,24 +23,8 @@ public class AddressBook {
 
 	public void open() {
 		System.out.println("SYSTEM MESSAGE: The address book is now open!");
-		PersonContact p1 = new PersonContact(null, "p1", "Jimmy Dean", "623-756-2323", "Phoenix, AZ", "12/23/1990",
-				"Loves sandwiches");
-		contacts.add(p1);
-		PersonContact p2 = new PersonContact(null, "p2", "Matt Damon", "949-686-2323", "Beverly Hills, CA",
-				"10/08/1970", "Kills people");
-		contacts.add(p2);
-		PersonContact p3 = new PersonContact(null, "p3", "Abbie Stentson", "787-124-7896", "Rolling Hills, MI",
-				"04/01/1988", "Great artist");
-		contacts.add(p3);
-		BusinessContact b1 = new BusinessContact(null, "b1", "BestBuy", "480-878-1800", "Mesa, AZ", "0900 - 2100",
-				"https://www.bestbuy.com");
-		contacts.add(b1);
-		BusinessContact b2 = new BusinessContact(null, "b2", "Target", "602-784-2454", "Gilbert, AZ", "1000 - 2200",
-				"https://www.target.com");
-		contacts.add(b2);
-		BusinessContact b3 = new BusinessContact(null, "b3", "Living Spaces", "623-989-7841", "Anthem, AZ",
-				"0800 - 2130", "https://www.livingspaces.com");
-		contacts.add(b3);
+		contacts = DataService.read();
+
 		mainMenu();
 	}
 
@@ -91,10 +76,11 @@ public class AddressBook {
 				sortContactName();
 				break;
 			case 9:
+				DataService.write(contacts);
 				System.out.println("*** This selection exits the address book! ***");
 				break;
 			default:
-
+				System.out.println("Please pick a valid option: 1 through 9.");
 			}
 		} while (option != 9);
 	}
@@ -166,15 +152,47 @@ public class AddressBook {
 	private void showDetails() {
 		System.out.println("*** This selection shows the details of the contact! ***");
 		viewAll();
-//		System.out.println("Which contact would you like to view?");
-//		//viewAll();
-//		int item = sc.nextInt();
-//		sc.nextLine();
+		System.out.println("Which contact would you like to view?");
+		viewAll();
+		System.out.println("Which contact would you like to view?");
+		int item = sc.nextInt();
+		sc.nextLine();
+		if (contacts.get(item) instanceof PersonContact) {
+			System.out.println("Viewing Person Contact");
+			viewPerson(item);
+
+		} else if (contacts.get(item) instanceof BusinessContact) {
+			System.out.println("Viewing Business Contact");
+			viewBusiness(item);
+		} else {
+			System.out.println("don't know what you mean");
+		}
+
+	}
+
+	private void viewBusiness(int item) {
+		System.out.println("Business photos: " + contacts.get(item).getListOfPhotos());
+		System.out.println("Business ID: " + contacts.get(item).getContactID());
+		System.out.println("Business name: " + contacts.get(item).getName());
+		System.out.println("Business pnone: " + contacts.get(item).getPhone());
+		System.out.println("Business name: " + contacts.get(item).getLocation());
+		System.out.println("Business hours: " + ((BusinessContact)contacts.get(item)).getBusinessHours());
+		System.out.println("Business URL: " + ((BusinessContact)contacts.get(item)).getWebsiteURL());
 		
-				
-			}
 		
-	
+		
+	}
+
+	private void viewPerson(int item) {
+		System.out.println("Person photos: " + contacts.get(item).getListOfPhotos());
+		System.out.println("Person ID: " + contacts.get(item).getContactID());
+		System.out.println("Person name: " + contacts.get(item).getName());
+		System.out.println("Person pnone: " + contacts.get(item).getPhone());
+		System.out.println("Person name: " + contacts.get(item).getLocation());
+		System.out.println("Person DOB: " + ((PersonContact)contacts.get(item)).getBirthDate());
+		System.out.println("Person description: " + ((PersonContact)contacts.get(item)).getDescription());
+		
+	}
 
 	private void updateContact() {
 		System.out.println("*** This selection updates the contact! ***");

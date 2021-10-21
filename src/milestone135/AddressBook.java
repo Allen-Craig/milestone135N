@@ -191,7 +191,9 @@ public class AddressBook {
 		System.out.println("Person name: " + contacts.get(item).getLocation());
 		System.out.println("Person DOB: " + ((PersonContact)contacts.get(item)).getBirthDate());
 		System.out.println("Person description: " + ((PersonContact)contacts.get(item)).getDescription());
-		
+		for (Photo i : contacts.get(item).getListOfPhotos()) {
+			System.out.println(i.toString());
+		}
 	}
 
 	private void updateContact() {
@@ -238,8 +240,24 @@ public class AddressBook {
 		System.out.println(" What do you want to change the Description to? ");
 		String description = sc.nextLine();
 		((PersonContact) contacts.get(item)).setDescription(description);
-
+		
+		System.out.println("Do you want to add a photo (Y or N)? ");
+		char option = sc.nextLine().toUpperCase().charAt(0);
+		while (option == 'Y') {
+			System.out.println("What's the photo ID?");
+			System.out.println("What's the file name?");
+			String fileName = sc.nextLine();
+			System.out.println("What's the photo date?");
+			String photoDate = sc.nextLine();
+			System.out.println("What's the photo description?");
+			String photoDescription = sc.nextLine();
+			System.out.println("Do you want to add another photo? (Y or N)  ");
+			option = sc.nextLine().toUpperCase().charAt(0);
+		}
 	}
+		
+
+	
 
 	private void editBusinessContact(int item) {
 		System.out.println(" What do you want to change the ID to? ");
@@ -260,8 +278,23 @@ public class AddressBook {
 		System.out.println(" What do you want to change the URL to? ");
 		String url = sc.nextLine();
 		((BusinessContact) contacts.get(item)).setWebsiteURL(url);
-
+		
+		System.out.println("Do you want to add a photo (Y or N)? ");
+		char option = sc.nextLine().toUpperCase().charAt(0);
+		while (option == 'Y') {
+			System.out.println("What's the photo ID?");
+			System.out.println("What's the file name?");
+			String fileName = sc.nextLine();
+			System.out.println("What's the photo date?");
+			String photoDate = sc.nextLine();
+			System.out.println("What's the photo description?");
+			String photoDescription = sc.nextLine();
+			System.out.println("Do you want to add another photo? (Y or N)  ");
+			option = sc.nextLine().toUpperCase().charAt(0);
+		}
 	}
+
+	
 
 	private void searchContact() {
 		System.out.println("*** This selection searches for a contact! ***");

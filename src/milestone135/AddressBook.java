@@ -253,21 +253,15 @@ public class AddressBook {
 		while (option == 'Y') {
 			System.out.println("What's the photo ID?");
 			int photoID = sc.nextInt();
-			//System.out.println("this is the photoID: " + photoID);
 			sc.nextLine();
 			System.out.println("What's the file name?");
 			String fileName = sc.nextLine();
-			//System.out.println( "this is the file name: " + fileName);
 			System.out.println("What's the photo date?");
 			String photoDate = sc.nextLine();
-			//System.out.println( "this is the photo date: " + photoDate);
 			System.out.println("What's the photo description?");
 			String photoDescription = sc.nextLine();
-			//System.out.println( "this is the photo description: " + photoDescription);
 			Photo photo = new Photo(photoID, fileName, photoDate, photoDescription);
-			//System.out.println( "this is the photo: " + photo);
 			photos.add(photo);
-			//System.out.println("this is photos: " + photos);
 			System.out.println("Do you want to add another photo? (Y or N)  ");
 			option = sc.nextLine().toUpperCase().charAt(0);
 		}

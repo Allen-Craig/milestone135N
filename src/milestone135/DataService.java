@@ -11,10 +11,10 @@ import java.util.List;
 
 public class DataService {
 
-	private static List<BaseContact> contacts = new ArrayList<>();
+	private static ArrayList<BaseContact> contacts = new ArrayList<>();
 
 	
-	public static List<BaseContact> read() {
+	public static ArrayList<BaseContact> read() {
 //		PersonContact p1 = new PersonContact(null, "p1", "Jimmy Dean", "623-756-2323", "Phoenix, AZ", "12/23/1990",
 //				"Loves sandwiches");
 //		contacts.add(p1);
@@ -51,7 +51,7 @@ public class DataService {
 
 	}
 
-	public static void write(List<BaseContact> goods) {
+	public static void write(ArrayList<BaseContact> goods) {
 		try {
 			FileOutputStream fos = new FileOutputStream("contacts.txt");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);

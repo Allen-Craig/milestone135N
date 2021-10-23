@@ -2,14 +2,19 @@ package milestone135;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+
+
+
+
 
 public class AddressBook {
 	// test
 	private String name;
 	private Scanner sc = new Scanner(System.in);
-	private List<BaseContact> contacts = new ArrayList<>();
+	private ArrayList<BaseContact> contacts = new ArrayList<>();
 
 	// Constructor
 	AddressBook(String name) {
@@ -191,8 +196,9 @@ public class AddressBook {
 		System.out.println("Person name: " + contacts.get(item).getLocation());
 		System.out.println("Person DOB: " + ((PersonContact)contacts.get(item)).getBirthDate());
 		System.out.println("Person description: " + ((PersonContact)contacts.get(item)).getDescription());
+		System.out.println("Photos: ");
 		for (Photo i : contacts.get(item).getListOfPhotos()) {
-			System.out.println(i.toString());
+			System.out.println(i.getPhotoID());
 		}
 	}
 
@@ -243,17 +249,32 @@ public class AddressBook {
 		
 		System.out.println("Do you want to add a photo (Y or N)? ");
 		char option = sc.nextLine().toUpperCase().charAt(0);
+		ArrayList<Photo> photos = new ArrayList<>();
 		while (option == 'Y') {
 			System.out.println("What's the photo ID?");
+			int photoID = sc.nextInt();
+			//System.out.println("this is the photoID: " + photoID);
+			sc.nextLine();
 			System.out.println("What's the file name?");
 			String fileName = sc.nextLine();
+			//System.out.println( "this is the file name: " + fileName);
 			System.out.println("What's the photo date?");
 			String photoDate = sc.nextLine();
+			//System.out.println( "this is the photo date: " + photoDate);
 			System.out.println("What's the photo description?");
 			String photoDescription = sc.nextLine();
+			//System.out.println( "this is the photo description: " + photoDescription);
+			Photo photo = new Photo(photoID, fileName, photoDate, photoDescription);
+			//System.out.println( "this is the photo: " + photo);
+			photos.add(photo);
+			//System.out.println("this is photos: " + photos);
 			System.out.println("Do you want to add another photo? (Y or N)  ");
 			option = sc.nextLine().toUpperCase().charAt(0);
 		}
+		contacts.get(item).setListOfPhotos(photos);
+		System.out.println("this is contacts: " + contacts);
+		
+		contacts.add(new PersonContact(photos, id, name, phone, location, dob, description));
 	}
 		
 
@@ -281,18 +302,27 @@ public class AddressBook {
 		
 		System.out.println("Do you want to add a photo (Y or N)? ");
 		char option = sc.nextLine().toUpperCase().charAt(0);
+		ArrayList<Photo> photos = new ArrayList<>();
 		while (option == 'Y') {
 			System.out.println("What's the photo ID?");
+			int photoID = sc.nextInt();
+			sc.nextLine();
 			System.out.println("What's the file name?");
 			String fileName = sc.nextLine();
 			System.out.println("What's the photo date?");
 			String photoDate = sc.nextLine();
 			System.out.println("What's the photo description?");
 			String photoDescription = sc.nextLine();
+			photos.add(new Photo(photoID, fileName,photoDate, photoDescription));
 			System.out.println("Do you want to add another photo? (Y or N)  ");
 			option = sc.nextLine().toUpperCase().charAt(0);
 		}
-	}
+		contacts.get(item).setListOfPhotos(photos);
+		System.out.println("this is contacts: " + contacts);
+		
+		contacts.add(new BusinessContact(photos, id, name, phone, location, hours, url));
+		
+	} 
 
 	
 

@@ -6,10 +6,10 @@ public class Photo implements Serializable{
 
 	private int photoID;
 	private String fileName;
-	private Date dateOfPhoto;
+	private String dateOfPhoto;
 	private String description;
 
-	public Photo(int photoID, String fileName, Date dateOfPhoto, String description) {
+	public Photo(int photoID, String fileName, String dateOfPhoto, String description) {
 		super();
 		this.photoID = photoID;
 		this.fileName = fileName;
@@ -33,11 +33,11 @@ public class Photo implements Serializable{
 		this.fileName = fileName;
 	}
 
-	public Date getDateOfPhoto() {
+	public String getDateOfPhoto() {
 		return dateOfPhoto;
 	}
 
-	public void setDateOfPhoto(Date dateOfPhoto) {
+	public void setDateOfPhoto(String dateOfPhoto) {
 		this.dateOfPhoto = dateOfPhoto;
 	}
 

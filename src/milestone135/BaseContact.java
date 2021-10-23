@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class BaseContact implements Serializable{
 
 	private ArrayList<Photo> listOfPhotos = new ArrayList<>();
+	
 	private String contactID;
 	private String name;
 	private String phone;
@@ -25,7 +26,9 @@ public class BaseContact implements Serializable{
 	}
 
 	public void setListOfPhotos(ArrayList<Photo> listOfPhotos) {
+		System.out.println("Calling setListOfPhotos with: " + listOfPhotos);
 		this.listOfPhotos = listOfPhotos;
+		System.out.println("this.listOfPhotos: " + this.listOfPhotos);
 	}
 
 	public String getContactID() {

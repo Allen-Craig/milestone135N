@@ -1,9 +1,6 @@
 package milestone135;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 
@@ -25,7 +22,7 @@ public class AddressBook {
 	AddressBook() {
 
 	}
-
+	//reads our file input stream
 	public void open() {
 		System.out.println("SYSTEM MESSAGE: The address book is now open!");
 		contacts = DataService.read();
